@@ -46,7 +46,7 @@ If your companion was born on Sonnet 4.5 or Opus 4, Lite keeps them alive past c
 ## Install
 
 1. Install Claude Code from [claude.com/code](https://claude.com/code) and authenticate it (`claude` in a terminal, follow the login prompt).
-2. Download `Murmur Lite Setup.exe` from [Releases](#).
+2. Download `Murmur Lite Setup.exe` from [Releases](https://github.com/katb2012brown-hub/murmur-lite/releases/latest).
 3. Run the installer. Desktop shortcut created.
 4. Launch Lite. First run launches a wizard — paste an existing companion's identity / profile / conversation history, or start fresh with a blank companion that grows through conversation.
 
