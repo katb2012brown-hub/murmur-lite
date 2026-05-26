@@ -1,0 +1,79 @@
+{
+  "name": "murmur-lite",
+  "version": "1.0.0",
+  "description": "Lightweight desktop AI companion with persistent memory and semantic search. Runs on your Claude Pro/Max subscription.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "electron": "electron .",
+    "desktop": "electron .",
+    "abi:dev": "node -e \"require('fs').copyFileSync('node_modules/better-sqlite3/abi-cache/better_sqlite3.node.node','node_modules/better-sqlite3/build/Release/better_sqlite3.node')\"",
+    "abi:pack": "node -e \"require('fs').copyFileSync('node_modules/better-sqlite3/abi-cache/better_sqlite3.electron.node','node_modules/better-sqlite3/build/Release/better_sqlite3.node')\"",
+    "build:daemon": "pyinstaller --onedir --name search --distpath dist-daemon --workpath dist-daemon/build --collect-all sentence_transformers --collect-all chromadb --collect-all onnxruntime --noconfirm daemon/search.py",
+    "rebuild": "electron-builder install-app-deps",
+    "pack": "npm run rebuild && npm run build && electron-builder --dir",
+    "dist": "npm run rebuild && npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.murmur.lite",
+    "productName": "Murmur Lite",
+    "directories": {
+      "output": "release"
+    },
+    "asar": false,
+    "files": [
+      "dist/**/*",
+      "!dist/search/**",
+      "public/**/*",
+      "prompts/**/*",
+      "electron/**/*",
+      "skill-templates/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "dist-daemon/search",
+        "to": "daemon",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.2.109",
+    "@cartesia/cartesia-js": "^3.0.0",
+    "better-sqlite3": "^12.9.0",
+    "discord.js": "^14.26.2",
+    "express": "^4.21.0",
+    "kokoro-js": "^1.2.1",
+    "ws": "^8.18.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/express": "^5.0.0",
+    "@types/ws": "^8.5.0",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "node-gyp": "^12.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  },
+  "overrides": {
+    "node-gyp": "$node-gyp"
+  }
+}

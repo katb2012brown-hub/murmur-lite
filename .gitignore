@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-daemon/
+build/search/
+release/
+*.tsbuildinfo
+
+# User data (created at runtime)
+data/
+
+# Environment & secrets
+.env
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# Python build cache (daemon source)
+__pycache__/
+*.py[cod]
+
+# Dev patches (local tooling)
+tts-patch.js
+patch-voice-mode.cjs
+vmpatch.cjs
