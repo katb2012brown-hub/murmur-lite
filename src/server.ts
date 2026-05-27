@@ -295,9 +295,9 @@ if (config.discordEnabled && config.discordToken) {
 
 const app = express();
 const server = createServer(app);
-const wss = new WebSocketServer({ server, maxPayload: 50 * 1024 * 1024 });
+const wss = new WebSocketServer({ server, maxPayload: 1024 * 1024 * 1024 });
 
-app.use(express.json({ limit: '50mb' }));
+app.use(express.json({ limit: '1gb' }));
 app.use(express.static(PUBLIC_DIR, { etag: false, maxAge: 0, setHeaders: (res, path) => { if (path.endsWith('.html')) res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); } }));
 
 
