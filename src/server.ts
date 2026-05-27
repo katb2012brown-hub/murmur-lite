@@ -212,6 +212,9 @@ setDiscordMessageHandler(async (text, authorName, attachments, reply) => {
   broadcast({ type: 'stream_start', threadId: requestThreadId });
 
   let fullText = '';
+  let discordAccumulatedThinking = '';
+  const discordToolInsertions: ToolInsertion[] = [];
+  const discordThinkingInsertions: ThinkingInsertion[] = [];
   const sessionToUse = currentSessionId || lastActiveSessionId;
   const taggedText = `[from Discord] ${text}`;
   try {
@@ -226,12 +229,17 @@ setDiscordMessageHandler(async (text, authorName, attachments, reply) => {
         broadcast({ type: 'stream_chunk', content: chunk, threadId: requestThreadId });
       },
       (toolName, toolInput, toolUseId) => {
+        discordToolInsertions.push({ textOffset: fullText.length, toolId: toolUseId, toolName, input: toolInput });
         broadcast({ type: 'tool_use', name: toolName, input: toolInput, id: toolUseId, threadId: requestThreadId });
       },
       (toolUseId, resultText) => {
+        const tool = discordToolInsertions.find(t => t.toolId === toolUseId);
+        if (tool) tool.output = resultText;
         broadcast({ type: 'tool_result', id: toolUseId, result: resultText, threadId: requestThreadId });
       },
       (thinkingText) => {
+        discordAccumulatedThinking += (discordAccumulatedThinking ? '\n\n' : '') + thinkingText;
+        discordThinkingInsertions.push({ textOffset: fullText.length, content: thinkingText });
         broadcast({ type: 'thinking', text: thinkingText, threadId: requestThreadId });
       },
       makeCompactionHandler(requestThreadId),
@@ -253,8 +261,11 @@ setDiscordMessageHandler(async (text, authorName, attachments, reply) => {
     fullText = result.text || fullText;
 
     // Save companion response to the thread the Discord message was for, not whatever's active now.
+    // Persist interleaved tool calls + thinking via metadata.segments so they survive reload / thread switch.
     if (requestThreadId) {
-      saveMessage(requestThreadId, 'companion', fullText, 'discord');
+      const segments = buildSegments(fullText, discordToolInsertions, discordThinkingInsertions);
+      const metadata = segments.length > 0 ? { segments } : undefined;
+      saveMessage(requestThreadId, 'companion', fullText, 'discord', undefined, discordAccumulatedThinking || undefined, metadata);
       updateThreadSession(requestThreadId, result.sessionId);
     }
 

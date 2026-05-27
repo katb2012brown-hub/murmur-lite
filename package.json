@@ -1,6 +1,6 @@
 {
   "name": "murmur-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight desktop AI companion with persistent memory and semantic search. Runs on your Claude Pro/Max subscription.",
   "license": "Apache-2.0",
   "type": "module",

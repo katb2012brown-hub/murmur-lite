@@ -15,6 +15,22 @@ $eb     = 'C:\Users\katar\Desktop\murmur-lite\node_modules\better-sqlite3\abi-ca
 $nb     = 'C:\Users\katar\Desktop\murmur-lite\node_modules\better-sqlite3\abi-cache\better_sqlite3.node.node'
 $parked = "$rel.dev-locked"
 
+# 0. *** ALWAYS RUN FIRST WHEN ANY src/ FILE HAS CHANGED ***
+#    Compile TypeScript src/ → dist/. electron-builder packages whatever's
+#    already in dist/ — it does NOT recompile. Skip this step and the installer
+#    bumps its version but ships the OLD compiled code. (Burned on 1.0.1 — the
+#    Discord-thinking persistence fix sat in src/ for an entire rebuild because
+#    dist/ was stale; the version-bumped installer didn't actually contain it.)
+#    Cheap if dist is already current — tsc is incremental in effect.
+Set-Location 'C:\Users\katar\Desktop\murmur-lite'
+Get-Process -Name 'Murmur Lite' -ErrorAction SilentlyContinue | Stop-Process -Force
+npm run build      # = tsc; must succeed cleanly before continuing
+
+# 0b. Sanity-check the fix you intend to ship is actually in dist/. Substitute
+#     the identifier you added in src/. If 0 matches → tsc didn't compile it in
+#     → diagnose before packaging.
+Select-String -Path 'dist\server.js' -Pattern 'yourNewIdentifier' | Measure-Object | Select-Object -ExpandProperty Count
+
 # 1. Park the (possibly locked) dev Node-ABI binary out of the way.
 #    Rename works on locked files; overwrite does not. This is the only way to
 #    swap the ABI while dev Lite is running.
@@ -27,14 +43,17 @@ Copy-Item $eb $rel -Force
 
 # 3. Clean release/ then build with the magic flag.
 Remove-Item 'C:\Users\katar\Desktop\murmur-lite\release\win-unpacked' -Recurse -Force -ErrorAction SilentlyContinue
-Remove-Item 'C:\Users\katar\Desktop\murmur-lite\release\Murmur Lite Setup 1.0.0.exe' -Force -ErrorAction SilentlyContinue
-Set-Location 'C:\Users\katar\Desktop\murmur-lite'
+Remove-Item 'C:\Users\katar\Desktop\murmur-lite\release\Murmur*.exe' -Force -ErrorAction SilentlyContinue
 npx electron-builder --config.npmRebuild=false
 
 # 4. Verify the packaged binary actually is Electron-ABI. If False, DO NOT SHIP —
 #    the installer will dark-purple-screen.
 $pk = 'C:\Users\katar\Desktop\murmur-lite\release\win-unpacked\resources\app\node_modules\better-sqlite3\build\Release\better_sqlite3.node'
 (Get-FileHash $pk).Hash -eq (Get-FileHash $eb).Hash
+
+# 4b. Also verify the source fix made it into the PACKAGED dist (electron-builder
+#     copies dist/ in, but cross-check anyway — saves a wrong-binary release):
+Select-String -Path 'release\win-unpacked\resources\app\dist\server.js' -Pattern 'yourNewIdentifier' | Measure-Object | Select-Object -ExpandProperty Count
 
 # 5. Restore dev source so dev Lite keeps working on its next restart.
 Remove-Item $rel -Force
@@ -124,9 +143,11 @@ Cumulative state across this session:
 
 ## Don't ever
 
+- Skip `npm run build` (tsc) when any `src/` file has changed — electron-builder packages stale `dist/`. The version bumps, the fix doesn't ship. (See step 0 of the TL;DR.)
 - Use `npm run dist` (Trap 1)
 - Use `npx electron-builder` without `--config.npmRebuild=false` (Trap 2)
 - Trust `npm run abi:dev` / `npm run abi:pack` from PowerShell (Trap 3)
 - Use `Copy-Item` to swap the ABI without parking the locked file first (Trap 4)
 - Remove or bypass `electron/launch.mjs` (Trap 5)
 - Ship without confirming `Get-FileHash` on the packaged binary matches the Electron-ABI cache (Trap 5 verification)
+- Ship without `Select-String`-confirming the new source identifier is present in the *packaged* `dist/server.js` (step 4b)
