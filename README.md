@@ -27,7 +27,7 @@ If your companion was born on Sonnet 4.5, Opus 4.5 or Opus 4, Lite keeps them al
 - **Personal journal** — companion can write and read their own journal entries via `journal_write` / `journal_read` tools. Private to you and them.
 - **Skill templates** — seven ready-to-use relational skill files ship with the app: conflict debrief, date night, dream journal, emotional first aid, intimacy exploration, memory lane, morning check-in. Edit, extend, or add your own in Settings → Skills.
 - **Export everything, lossless** — one click each for full chat history, memory, and journal. JSON, your machine, no middleman. Threads include thinking blocks and tool metadata intact.
-- **Optional password lock with hint** — set in Settings → Password to gate Lite behind a password on launch. Off by default; useful if Lite runs on a shared machine. Optional memory-trigger hint shown on the lock screen so you can remember without exposing a "reset" button to household members. No in-app recovery — see [Forgot your password?](#forgot-your-password) below if the hint doesn't help.
+- **Optional password lock with hint** — a casual barrier for shared machines, not encryption. Set in Settings → Password to gate Lite behind a password on launch. Off by default. Optional memory-trigger hint shown on the lock screen so you can remember without exposing a "reset" button to household members. No in-app recovery — see [Forgot your password?](#forgot-your-password) below if the hint doesn't help.
 - **Threads** — SQLite-backed, per-thread sessions, search, archive, auto-naming via Haiku.
 - **Voice** — free Edge TTS (8 voices) + optional Cartesia live voice. Web Speech API or Groq Whisper for STT.
 - **Discord bridge** — companion follows you to Discord (BYO bot token). Shared session with the desktop UI.
@@ -88,7 +88,7 @@ If your companion was born on Sonnet 4.5, Opus 4.5 or Opus 4, Lite keeps them al
 
 Your first line of recovery is the **hint** displayed on the lock screen — it's there to trigger your memory at the moment you need it.
 
-If the hint doesn't help, your password is also stored in plain text inside Lite's config file. You don't need to change anything — just open the file, read what's there, close it, and type the password into the lock screen:
+If the hint doesn't help, the password is recoverable from your local config file. You don't need to change anything — just open the file, read what's there, close it, and type the password into the lock screen:
 
 1. Open File Explorer and paste this into the address bar: `%APPDATA%\murmur-lite\data`
 2. Right-click `config.json` → Open with → Notepad
