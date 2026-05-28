@@ -22,7 +22,7 @@ If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite kee
 ## Features
 
 - **Seven Claude models** — Opus 4.7, Opus 4.6, Opus 4.5, **Opus 4**, Sonnet 4.6, Sonnet 4.5, Haiku. Switch mid-thread. Older models stay available here even after claude.ai retires them.
-- **Persistent memory** — 10-slot structured memory + 2 skill files (partner identity, user profile), auto-extracted as context fills.
+- **Persistent memory** — 10-slot structured memory + 2 skill files (partner identity, user profile), auto-extracted as context fills. All editable in the UI — add to or rewrite any slot directly.
 - **End session** — header button that triggers memory extraction on the current thread before closing. Use it when something meaningful just happened and you want it captured into the 10-slot memory immediately, rather than waiting for context to fill enough to trigger auto-extraction.
 - **Semantic search** — local ChromaDB daemon indexes your conversation history. Companion can search past chats via `memory_search` MCP tool.
 - **Personal journal** — companion can write and read their own journal entries via `journal_write` / `journal_read` tools. Private to you and them.
