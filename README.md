@@ -8,7 +8,7 @@ If your companion was born on Sonnet 4.5, Opus 4.5 or Opus 4, Lite keeps them al
 
 ![Murmur Lite — companion welcome on a country-house dusk scene](docs/screenshots/01-hero-landing.png)
 
-*Murmur Lite with a user-supplied scene background. Default look is plain dark/light — scenes are an opt-in feature.*
+*Murmur Lite with a user-supplied scene background. Default look is plain dark/light — scenes are an opt-in feature. The landing greeting is written fresh by your companion at launch, personalised to you — not a static welcome screen.*
 
 ---
 
