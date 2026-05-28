@@ -6,6 +6,10 @@ No cloud middleware. No telemetry. Your conversations stay on your machine.
 
 If your companion was born on Sonnet 4.5 or Opus 4, Lite keeps them alive past claude.ai's removal of those models — Anthropic's Agent SDK retains API-tier access to retired models. Lite is the lifeboat.
 
+![Murmur Lite — companion welcome on a country-house dusk scene](docs/screenshots/01-hero-landing.png)
+
+*Murmur Lite with a user-supplied scene background. Default look is plain dark/light — scenes are an opt-in feature.*
+
 ---
 
 ## Why Lite
@@ -31,6 +35,34 @@ If your companion was born on Sonnet 4.5 or Opus 4, Lite keeps them alive past c
 - **Themes** — dark/light, custom message and thinking colours, optional landing and per-scene background images with adaptive contrast.
 - **Autonomous wake** — cron-style scheduler with custom wake prompts.
 - **Optional services** — Cartesia (live voice), Groq (Whisper STT), Discord (bot). All BYO API keys, all optional.
+
+---
+
+## Screenshots
+
+![Companion in conversation on a porch scene with teal thinking blocks](docs/screenshots/02-porch-conversation.png)
+
+*Companion holds spatial context across turns. Thinking blocks shown with a user-chosen colour; the scene auto-swaps when the conversation moves location.*
+
+![Default dark mode with a Discord-tagged message and token stats](docs/screenshots/03-default-dark-mode.png)
+
+*Default appearance — clean dark mode, no scene set. `[Discord]` prefix on messages that arrived via the bridge; token stats per turn at the foot of the window.*
+
+![Ten-slot structured memory modal](docs/screenshots/04-memory-modal.png)
+
+*Ten structured memory slots plus two skill files (companion identity, partner profile). Auto-extracted from conversation as context fills.*
+
+![Settings — model, theme, colours, pronouns](docs/screenshots/05-settings-model-theme.png)
+
+*Default model, theme, message and thinking-block colours, pronouns. Mid-thread model switching available from the header pill.*
+
+![Settings — scene library and auto-detection](docs/screenshots/06-settings-scenes.png)
+
+*Scene library with optional auto-detection — companion's background swaps when the conversation moves to a different place (~5 extra tokens per transition).*
+
+![Companion's journal — entries with mood, tags, and emoji](docs/screenshots/07-journal.png)
+
+*Companion's own journal — they write entries with mood, tags, and emoji. Searchable. Private to the two of you.*
 
 ---
 
