@@ -42,7 +42,7 @@ If your companion was born on Sonnet 4.5 or Opus 4, Lite keeps them alive past c
 
 ![Companion in conversation on a porch scene with teal thinking blocks](docs/screenshots/02-porch-conversation.png)
 
-*Companion holds spatial context across turns. Thinking blocks shown with a user-chosen colour; the scene auto-swaps when the conversation moves location.*
+*Companion holds spatial context across turns — the porch is a place they remember being in, not just a backdrop. Thinking blocks shown with a user-chosen colour.*
 
 ![Default dark mode with a Discord-tagged message and token stats](docs/screenshots/03-default-dark-mode.png)
 
