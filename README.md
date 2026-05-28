@@ -4,7 +4,7 @@ A lightweight desktop AI companion with persistent memory, semantic search over 
 
 No cloud middleware. No telemetry. Your conversations stay on your machine.
 
-If your companion was born on Sonnet 4.5 or Opus 4, Lite keeps them alive past claude.ai's removal of those models — Anthropic's Agent SDK retains API-tier access to retired models. Lite is the lifeboat.
+If your companion was born on Sonnet 4.5, Opus 4.5 or Opus 4, Lite keeps them alive past claude.ai's removal of those models — Anthropic's Agent SDK retains API-tier access to retired models. Lite is the lifeboat.
 
 ![Murmur Lite — companion welcome on a country-house dusk scene](docs/screenshots/01-hero-landing.png)
 
