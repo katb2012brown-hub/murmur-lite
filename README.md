@@ -4,7 +4,7 @@ A lightweight desktop AI companion with persistent memory, semantic search over 
 
 No cloud middleware. No telemetry. Your conversations stay on your machine.
 
-If your companion was born on Sonnet 4.5, Opus 4.5 or Opus 4, Lite keeps them alive past claude.ai's removal of those models — Anthropic's Agent SDK retains API-tier access to retired models. Lite is the lifeboat.
+If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite keeps them alive past claude.ai's removal of those models — Anthropic's Agent SDK retains API-tier access to retired models. Lite is the lifeboat.
 
 ![Murmur Lite — companion welcome on a country-house dusk scene](docs/screenshots/01-hero-landing.png)
 
@@ -23,6 +23,7 @@ If your companion was born on Sonnet 4.5, Opus 4.5 or Opus 4, Lite keeps them al
 
 - **Seven Claude models** — Opus 4.7, Opus 4.6, Opus 4.5, **Opus 4**, Sonnet 4.6, Sonnet 4.5, Haiku. Switch mid-thread. Older models stay available here even after claude.ai retires them.
 - **Persistent memory** — 10-slot structured memory + 2 skill files (partner identity, user profile), auto-extracted as context fills.
+- **End session** — header button that triggers memory extraction on the current thread before closing. Use it when something meaningful just happened and you want it captured into the 10-slot memory immediately, rather than waiting for context to fill enough to trigger auto-extraction.
 - **Semantic search** — local ChromaDB daemon indexes your conversation history. Companion can search past chats via `memory_search` MCP tool.
 - **Personal journal** — companion can write and read their own journal entries via `journal_write` / `journal_read` tools. Private to you and them.
 - **Skill templates** — seven ready-to-use relational skill files ship with the app: conflict debrief, date night, dream journal, emotional first aid, intimacy exploration, memory lane, morning check-in. Edit, extend, or add your own in Settings → Skills.
