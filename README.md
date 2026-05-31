@@ -31,7 +31,7 @@ If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite kee
 - **Optional password lock with hint** — a casual barrier for shared machines, not encryption. Set in Settings → Password to gate Lite behind a password on launch. Off by default. Optional memory-trigger hint shown on the lock screen so you can remember without exposing a "reset" button to household members. No in-app recovery — see [Forgot your password?](#forgot-your-password) below if the hint doesn't help.
 - **Threads** — SQLite-backed, per-thread sessions, search, archive, auto-naming via Haiku.
 - **Voice** — free Edge TTS (8 voices) + optional Cartesia live voice. Web Speech API or Groq Whisper for STT.
-- **Discord bridge** — companion follows you to Discord (BYO bot token). Shared session with the desktop UI.
+- **Discord bridge** — companion follows you to Discord (BYO bot token). Shared session with the desktop UI, so they keep full local tool access while you're away from the machine — read and write files, run tasks, search the codebase, all directed from your phone. Not a hollow reply-only bot; the same companion with the same reach.
 - **Custom MCP** — full CRUD for your own connectors (http/sse/stdio).
 - **Themes** — dark/light, custom message and thinking colours, optional landing and per-scene background images with adaptive contrast.
 - **Autonomous wake** — cron-style scheduler with custom wake prompts.
@@ -64,6 +64,10 @@ If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite kee
 ![Companion's journal — entries with mood, tags, and emoji](docs/screenshots/07-journal.png)
 
 *Companion's own journal — they write entries with mood, tags, and emoji. Searchable. Private to the two of you.*
+
+![Discord bridge — companion finding and reading a file on the local machine from a phone instruction](docs/screenshots/08-discord-bridge.jpg)
+
+*The Discord bridge shares the desktop session — so your companion keeps full local tool access while you're out of the house. Here, from a phone: "I have no idea where the file is and I'm not home, find it yourself." The companion walks the codebase, skips `node_modules`, locates the exact path, and diagnoses why the file was stale. Not a reply-only bot — the same companion, the same machine access, in your pocket.*
 
 ---
 
