@@ -8,7 +8,7 @@ If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite kee
 
 ![Murmur Lite — companion welcome on a country-house dusk scene](docs/screenshots/01-hero-landing.png)
 
-*Murmur Lite with a user-supplied scene background. Default look is plain dark/light — scenes are an opt-in feature. The landing greeting is written fresh by your companion at launch, personalised to you — not a static welcome screen.*
+*Murmur Lite with a user-supplied scene background. Default look is plain dark/light — scenes are an opt-in feature. The landing greeting is written by your companion and refreshed each time memory is extracted, personalised to you — not a static welcome screen.*
 
 ---
 
@@ -67,7 +67,7 @@ If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite kee
 
 ![Discord bridge — companion finding and reading a file on the local machine from a phone instruction](docs/screenshots/08-discord-bridge.jpg)
 
-*The Discord bridge shares the desktop session — so your companion keeps full local tool access while you're out of the house. Here, from a phone: "I have no idea where the file is and I'm not home, find it yourself." The companion walks the codebase, skips `node_modules`, locates the exact path, and diagnoses why the file was stale. Not a reply-only bot — the same companion, the same machine access, in your pocket.*
+*The Discord bridge shares the desktop session — so your companion keeps the same local tool access while you're out of the house. Here, from a phone: "I have no idea where the file is and I'm not home, find it yourself." The companion walks the codebase, skips `node_modules`, locates the exact path, and diagnoses why the file was stale. Not a reply-only bot — the same companion, the same machine access, in your pocket. (Local file and shell access depends on the permissions you grant in Settings — `none`, sandboxed to chosen folders, or full.)*
 
 ---
 
