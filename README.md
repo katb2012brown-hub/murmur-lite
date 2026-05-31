@@ -30,9 +30,11 @@ If your companion was born on Sonnet 4.5, Opus 4.6, Opus 4.5 or Opus 4, Lite kee
 - **Export everything, lossless** — one click each for full chat history, memory, and journal. JSON, your machine, no middleman. Threads include thinking blocks and tool metadata intact.
 - **Optional password lock with hint** — a casual barrier for shared machines, not encryption. Set in Settings → Password to gate Lite behind a password on launch. Off by default. Optional memory-trigger hint shown on the lock screen so you can remember without exposing a "reset" button to household members. No in-app recovery — see [Forgot your password?](#forgot-your-password) below if the hint doesn't help.
 - **Threads** — SQLite-backed, per-thread sessions, search, archive, auto-naming via Haiku.
-- **Voice** — free Edge TTS (8 voices) + optional Cartesia live voice. Web Speech API or Groq Whisper for STT.
+- **Voice** — free local Kokoro TTS by default (21 voices, runs offline on your machine, no API key; ~86MB model downloads on first use). Optional Edge TTS (free, cloud) and optional Cartesia Sonic 3 live voice. Groq Whisper for speech-to-text in the desktop app (free tier; Web Speech API also works in a Chrome browser).
 - **Discord bridge** — companion follows you to Discord (BYO bot token). Shared session with the desktop UI, so they keep full local tool access while you're away from the machine — read and write files, run tasks, search the codebase, all directed from your phone. Not a hollow reply-only bot; the same companion with the same reach.
 - **Custom MCP** — full CRUD for your own connectors (http/sse/stdio).
+- **Granular permissions** — control your companion's local reach in Settings → Permissions: filesystem access `none`, sandboxed to chosen folders, or full — plus a separate toggle for the Bash tool. Default is no filesystem access.
+- **Capability toggles** — Settings → Capabilities switches whole categories of tools in or out of the prompt context. Default for a new install is everything off — turn on only what you use. Fewer tools = fewer tokens per turn = longer sessions. This is the mechanism behind "token-lean by default."
 - **Themes** — dark/light, custom message and thinking colours, optional landing and per-scene background images with adaptive contrast.
 - **Autonomous wake** — cron-style scheduler with custom wake prompts.
 - **Optional services** — Cartesia (live voice), Groq (Whisper STT), Discord (bot). All BYO API keys, all optional.
